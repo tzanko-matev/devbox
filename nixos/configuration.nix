@@ -3,7 +3,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
       ./vagrant.nix
     ];
 
@@ -39,6 +39,8 @@
     netcat
     nfs-utils
     rsync
+    git
+    vim
   ];
 
   # Creates a "vagrant" users with password-less sudo access
