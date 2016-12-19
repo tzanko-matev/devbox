@@ -8,7 +8,6 @@ cat >/etc/nixos/vagrant.nix <<EOF
     ./vagrant-hostname.nix
     ./vagrant-network.nix
     /vagrant/nixos/configuration.nix
-    /vagrant/nixos/dev-tzanko.nix
   ];
 }
 EOF

@@ -1,5 +1,9 @@
 { config, pkgs, ...}:
-
+let
+  myEmacs = (import ./emacs-tzanko.nix {inherit pkgs; });
+in
 {
-	environment.systemPackages = [pkgs.emacs25];
+	environment.systemPackages = [pkgs.firefox myEmacs pkgs.vim pkgs.git];
+	services.xserver.enable = true;
+	services.xserver.windowManager.xmonad.enable = true;
 }
