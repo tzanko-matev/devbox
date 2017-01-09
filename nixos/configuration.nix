@@ -14,7 +14,7 @@ let
     if (user!=null) && (builtins.pathExists path) then [path] else [];
 
 
-  survey = import ../survery/default.nix {inherit pkgs;};
+  survey = import ../survey/default.nix {inherit pkgs;};
 
 in
 {
@@ -22,9 +22,15 @@ in
     survey.package
   ];
   
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 9200 5601];
   networking.firewall.allowPing = true;
+
   services.nginx.enable = true;
+  services.nginx.config = builtins.readFile ./nginx.conf;
+  
+  #Enable Elasticsearch/Kibana
+  services.elasticsearch.enable = true;
+  services.kibana.enable = true;
 
   imports = getUserModule (vmConfig.username or null);
 }

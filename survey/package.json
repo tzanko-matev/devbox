@@ -1,0 +1,17 @@
+{
+    "name": "survey",
+    "version": "0.0.0",
+    "dependencies": {
+	"express":"^4.14.0"
+    },
+
+    "devDependencies": {
+	"babel-cli":"^6.0.0"
+    },
+    
+    "bin" : "./index.js",
+    
+    "scripts": {
+	"build": "babel src -d lib"
+    }
+}
