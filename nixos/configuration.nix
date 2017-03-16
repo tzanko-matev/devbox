@@ -9,7 +9,8 @@ let
 
   getUserModule = user:
   let
-    path = builtins.toPath "/vagrant/nixos/dev-${user}.nix";
+    #TODO The repo's path should not be here
+    path = builtins.toPath "/home/vagrant/devbox/nixos/dev-${user}.nix";
   in
     if (user!=null) && (builtins.pathExists path) then [path] else [];
 
