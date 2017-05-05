@@ -19,19 +19,24 @@ let
 
 in
 {
+
+  imports = [./elasticsearch5.nix] ++ (getUserModule (vmConfig.username or null));
+  services.elasticsearch5.enable = true;
+  # Allow unfree packages like dropbox
+  nixpkgs.config.allowUnfree = true;
+
   environment.systemPackages = with pkgs; [
-    survey.package
+    # survey.package
+    nodePackages.node2nix
   ];
-  
+
   networking.firewall.allowedTCPPorts = [ 80 443 9200 5601];
   networking.firewall.allowPing = true;
 
   services.nginx.enable = true;
   services.nginx.config = builtins.readFile ./nginx.conf;
-  
-  #Enable Elasticsearch/Kibana
-  services.elasticsearch.enable = true;
-  services.kibana.enable = true;
 
-  imports = getUserModule (vmConfig.username or null);
+  #Install Nodejs
+
+  #imports = getUserModule (vmConfig.username or null);
 }

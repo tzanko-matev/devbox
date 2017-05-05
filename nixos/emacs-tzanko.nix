@@ -22,6 +22,7 @@ in
   emacsWithPackages (epkgs: (with epkgs.melpaStablePackages; [ 
     magit          # ; Integrate git <C-x g>
     zerodark-theme # ; Nicolas' theme
+    yaml-mode      # ; YAML
   ]) ++ (with epkgs.melpaPackages; [
     nix-mode       # ; Nix mode
   ]) ++ (with epkgs.elpaPackages; [ ]) ++ [
